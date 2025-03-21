@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.thumbnail{
+  @apply w-[99.82px] h-[99.82px] rounded-[8.07px] object-cover
+}
+
 @theme {
   --text-*: initial;
   --text-h1: 48px;
