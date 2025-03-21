@@ -4,13 +4,19 @@ import outfit2 from './assets/outfit2.png';
 import outfit3 from './assets/outfit3.png';
 import outfit4 from './assets/outfit4.png';
 import Color from './Color.jsx';
+import Size from './Size.jsx';
 
 export default function Item(){
     
     const [selectedColorId, setSelectedColorId] = useState('Black');
+    const [selectedSize, setSelectedSize] = useState('M');
 
     const handleColorSelection = (colorId) => { // Functions that handles the color state.
         setSelectedColorId(colorId);
+    }
+
+    const handleSizeSelection = (size) => {
+        setSelectedSize(size);
     }
 
     // Needed since Tailwind cannot be used dynamically with backticks.
@@ -23,6 +29,8 @@ export default function Item(){
 
 
     ] 
+
+    const sizes = ['XS', 'SM', 'M', 'L', 'XL', 'XXL', '3XL', '4XL'];
 
     return (
         <div className="flex flex-col items-center pt-[34px] px-[21px] gap-5">
@@ -87,8 +95,22 @@ export default function Item(){
                         ))}
                     </div>
                 </div>
-                <div></div>
-                <div></div>
+                <div className="flex flex-col gap-[15px]">
+                    <div className="flex gap-2.5 items-center">
+                        <span className="text-p text-gray">Size:</span>
+                        <span className="text-h6 font-bold text-black">M</span>
+                    </div>
+                    <div className="flex gap-2.5 pb-1 overflow-x-auto">
+                        {sizes.map((size) =>(
+                                    <Size 
+                                        key={size}
+                                        size={size}
+                                        onSelect={handleSizeSelection}
+                                        selectedSize={selectedSize}
+                                    />
+                        ))}    
+                    </div>
+                </div>
             </div>
             <div>
 
